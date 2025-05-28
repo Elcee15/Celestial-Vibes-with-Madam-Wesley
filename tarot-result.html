@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Tarot Reading - Celestial Vibes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Cinzel', serif;
+      background: linear-gradient(to bottom right, #1a1831 50%, #2d264d 100%);
+      color: #ffffff;
+    }
+
+    nav {
+      background-color: #1a1831;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    nav h1 {
+      font-size: 1.5rem;
+      color: #e0baff;
+      margin: 0;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav li {
+      margin-left: 20px;
+    }
+
+    nav a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 10px 20px;
+      border-radius: 6px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #3c336b;
+      color: #e0baff;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .result-row {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    .result-row img {
+      width: 100px;
+      border-radius: 10px;
+      border: 2px solid #e0baff;
+    }
+
+    .result-text {
+      flex: 1;
+    }
+
+    .result-text h3 {
+      margin-top: 0;
+      color: #e0baff;
+    }
+
+    .summary-box {
+      background-color: rgba(255,255,255,0.07);
+      padding: 20px;
+      margin: 40px 0;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+
+    .summary-box h2 {
+      color: #ffccff;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 10px 20px;
+      background-color: #3c336b;
+      color: #ffffff;
+      border-radius: 8px;
+      text-decoration: none;
+    }
+
+    .back-btn:hover {
+      background-color: #56408b;
+    }
+
+    footer {
+      background-color: #1a1831;
+      padding: 20px;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: #e0baff;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <h1>Celestial Vibes</h1>
+    <ul>
+      <li><a href="Main Page.html">Home</a></li>
+      <li><a href="Astrology-101.html">Astrology 101</a></li>
+      <li><a href="Tarot.html">Tarot</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <h2>Your Tarot Reading</h2>
+    <div id="results"></div>
+    <div class="summary-box">
+      <h2>✨ Intuitive Summary ✨</h2>
+      <p id="summary-text">Your summary will appear here after your reading is loaded.</p>
+    </div>
+    <a href="Tarot.html" class="back-btn">🔄 Draw Again</a>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Celestial Vibes with Madam Wesley Horoscope | Designed by GROUP - 2</p>
+    <p>Image credits: Rider-Waite Tarot / Wikimedia Commons</p>
+  </footer>
+
+  <script>
+    const resultsContainer = document.getElementById('results');
+    const summaryBox = document.getElementById('summary-text');
+    const resultData = JSON.parse(sessionStorage.getItem('tarotResults')) || [];
+
+    if (!resultData.length) {
+      resultsContainer.innerHTML = '<p>No reading found. Please draw your cards again.</p>';
+    } else {
+      const themes = {
+        love: 0,
+        change: 0,
+        challenge: 0,
+        reflection: 0,
+        action: 0,
+        guidance: 0
+      };
+
+      resultData.forEach(card => {
+        const row = document.createElement('div');
+        row.className = 'result-row';
+
+        const img = document.createElement('img');
+        img.src = card.img;
+        img.alt = card.name;
+
+        const text = document.createElement('div');
+        text.className = 'result-text';
+        text.innerHTML = `<h3>${card.name}</h3><p>${card.meaning}</p>`;
+
+        row.appendChild(img);
+        row.appendChild(text);
+        resultsContainer.appendChild(row);
+
+        const m = card.meaning.toLowerCase();
+        if (m.includes("love") || m.includes("union") || m.includes("relationship")) themes.love++;
+        if (m.includes("new") || m.includes("beginning") || m.includes("transformation") || m.includes("rebirth")) themes.change++;
+        if (m.includes("challenge") || m.includes("conflict") || m.includes("struggle") || m.includes("fear") || m.includes("obstacle")) themes.challenge++;
+        if (m.includes("inner") || m.includes("solitude") || m.includes("reflect") || m.includes("intuition") || m.includes("wisdom")) themes.reflection++;
+        if (m.includes("action") || m.includes("control") || m.includes("focus") || m.includes("victory") || m.includes("drive")) themes.action++;
+        if (m.includes("guidance") || m.includes("divine") || m.includes("path") || m.includes("fate") || m.includes("destiny")) themes.guidance++;
+      });
+
+      let dominantEntry = Object.entries(themes).sort((a, b) => b[1] - a[1])[0];
+let dominant = dominantEntry && dominantEntry[1] > 0 ? dominantEntry[0] : 'guidance';
+      let interpretation = '';
+
+const subject = ["This reading hints at", "You are currently experiencing", "The cards reveal", "Your journey involves", "Spirit highlights"];
+const focus = {
+  love: ["deepening bonds", "emotional connections", "growing intimacy", "trust and vulnerability"],
+  change: ["transformation ahead", "a season of renewal", "shifts in your path", "letting go and starting anew"],
+  challenge: ["tests of strength", "internal or external conflict", "hard-earned wisdom", "unresolved tension"],
+  reflection: ["a need for solitude", "inner revelations", "contemplation before movement", "spiritual insights"],
+  action: ["decisive movement", "assertive choices", "taking the lead", "making impactful steps"],
+  guidance: ["cosmic alignment", "divine messages", "the universe guiding your path", "spiritual encouragement"]
+};
+
+const pick = arr => arr[Math.floor(Math.random() * arr.length)];
+
+interpretation = `${pick(subject)} ${pick(focus[dominant])}. Embrace this energy with awareness and trust.`;
+
+summaryBox.textContent = interpretation;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Celestial Vibes with Madam Wesley</title>
+ <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary-color: #e0baff;
+    --secondary-color: #1a1831;
+    --accent-color: #c590e9;
+    --text-color: #ffffff;
+    --button-color: #3c336b;
+    --button-hover: #56408b;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Cinzel', sans-serif;
+    background: linear-gradient(to bottom right, #1a1831 50%, #2d264d 100%);
+    color: var(--text-color);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--secondary-color);
+    padding: 15px 30px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  nav h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin: 0;
+  }
+
+  nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav li {
+    margin-left: 20px;
+  }
+
+  nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: background 0.3s;
+  }
+
+  nav a:hover {
+    background: var(--button-hover);
+  }
+
+  .banner {
+    text-align: center;
+    padding: 60px 20px;
+    background: url('https://cdn.discordapp.com/attachments/1286281650770149387/1376936824982732893/ezgif-82e06e2bf8abae.gif?ex=683723d9&is=6835d259&hm=78d950337aa533d0a9f62ca694a708b8f49f13f818a1fa9f2908db1a7cd07dcf&') center/cover no-repeat;
+    position: relative;
+  }
+
+  .banner::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(26, 24, 49, 0.7);
+  }
+
+  .banner-content {
+    position: relative;
+    z-index: 1;
+    animation: fadeIn 1s ease-out;
+  }
+
+  .banner img {
+    width: 300px;
+    border-radius: 50%;
+    border: 4px solid var(--primary-color);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    margin-bottom: 20px;
+  }
+
+  .banner h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+  }
+
+  .banner p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+
+.cta {
+  background: linear-gradient(45deg, #ff6ec4, #7873f5);
+  color: #fff;
+  padding: 16px 40px;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s ease;
+  font-size: 1.1rem;
+  letter-spacing: 1.5px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 10%, transparent 10.01%);
+  background-size: 10px 10px;
+  animation: move-bg 4s linear infinite;
+}
+
+@keyframes move-bg {
+  from { transform: translate(0, 0); }
+  to { transform: translate(10px, 10px); }
+}
+
+.cta:hover {
+  background: linear-gradient(45deg, #ff3cac, #784ba0);
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+  section {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease forwards;
+  }
+
+  .intro, .zodiac-buttons{
+    max-width: 900px;
+    margin: 40px auto;
+    text-align: center;
+    padding: 0 20px;
+  }
+
+  .intro h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+  }
+.zodiac-buttons {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 15px;
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.zodiac-buttons a {
+  background: var(--button-color);
+  color: var(--text-color);
+  border-radius: 8px;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  transition: transform 0.3s;
+}
+
+.zodiac-buttons a img {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 5px;
+  border-radius: 20px;
+}
+
+.zodiac-buttons a span {
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.zodiac-buttons a:hover {
+  background: var(--button-hover);
+  transform: scale(1.05);
+}
+
+
+  footer {
+    background: var(--secondary-color);
+    padding: 20px;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+
+  footer a {
+    color: var(--primary-color);
+  }
+
+  #music-control {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--primary-color);
+    color: var(--secondary-color);
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Star decorations */
+  .stars {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: #fff;
+    animation: twinkle 2s infinite alternate;
+  }
+
+  @keyframes twinkle {
+    from { opacity: 0.2; }
+    to { opacity: 1; }
+  }
+  .fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.daily-vibes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin: 40px auto;
+  max-width: 900px;
+  padding: 20px;
+  background: rgba(26, 24, 49, 0.7);
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+
+.daily-vibe-card {
+  flex: 1 1 300px;
+  text-align: center;
+  color: var(--text-color);
+}
+
+.daily-vibe-card img {
+  width: 150px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  border: 3px solid var(--primary-color);
+  box-shadow: 0 0 15px rgba(0,0,0,0.4);
+}
+
+.daily-vibe-card h3 {
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+.daily-vibe-card p {
+  font-size: 1rem;
+}
+</style>
+</head>
+<body>
+
+<div class="stars"></div>
+
+<nav>
+  <h1>Celestial Vibes</h1>
+  <ul>
+    <li><a href="Index.html">Home</a></li>
+    <li><a href="Astrology-101.html">Astrology 101</a></li>
+    <li><a href="tarot.html">Tarot</a></li>
+  </ul>
+</nav>
+
+<section class="banner">
+  <div class="banner-content">
+    <img src="https://media.discordapp.net/attachments/1073222130768031806/1376906023087902773/495268661_2046969052378874_7232082344268298059_n.png?ex=68370729&is=6835b5a9&hm=7741dd87c843a9e6b9d71680cb03d5870426c601acb5dfec779704f1d75ed7c8&=&format=webp&quality=lossless&width=1376&height=917" alt="Zodiac Wheel" />
+    <h1>Welcome to Celestial Vibes with Madam Wesley</h1>
+    <p>✨ Discover your destiny written in the stars ✨</p>
+    <a href="Astrology-101.html" class="cta">Explore Astrology 101</a>
+  </div>
+</section>
+
+<section class="intro fade-in">
+  <h2>About Celestial Vibes with Madam Wesley</h2>
+  <p>
+    Celestial Vibes with Madam Wesley is your personalized guide to the zodiac universe. Dive into your star sign, explore compatibility,
+      and uncover the cosmic blueprint behind your personality. Whether you're a curious beginner or a star-savvy pro,
+      there's something here for you.
+  </p>
+</section>
+
+
+<section class="zodiac-buttons fade-in">
+  <a href="Aries.html"><img src="https://media.discordapp.net/attachments/1073222130768031806/1376922918008651888/cb0b7476c71dafb03c4dd1f115d0fadb.png?ex=683716e5&is=6835c565&hm=29e711ea7b4e59a0518f542b1fbb92fcb2dee7f0f490850328719d2b7f5c4a46&=&format=webp&quality=lossless" alt="Aries" /><span>Aries</span></a>
+  <a href="Taurus.html"><img src="https://media.discordapp.net/attachments/1073222130768031806/1376923728692248686/d8285e6c417537b5dc5ef6b471b58468.png?ex=683717a6&is=6835c626&hm=044db3f44c6cebd16711a58459782fdb4a3b4105f3e1065e8b1cdaac04f09768&=&format=webp&quality=lossless" alt="Taurus" /><span>Taurus</span></a>
+  <a href="Gemini.html"><img src="https://media.discordapp.net/attachments/1073222130768031806/1376923729342234737/17a04d3d397ed5b750d7e7e662d804c3.png?ex=683717a7&is=6835c627&hm=7bd23d7f2e76d7131fd87e4cbe0172590c7b588e0c577f86b53486d22f8c3ba7&=&format=webp&quality=lossless" alt="Gemini" /><span>Gemini</span></a>
+  <a href="Cancer.html"><img src="https://media.discordapp.net/attachments/1073222130768031806/1376923729652744373/26e376710016bdce91f8f2ff101804f1.png?ex=683717a7&is=6835c627&hm=a81dbc00145ea11d9b6f0329bd6e1e4686e8b5f59bf10b12a9f4ff18a1601631&=&format=webp&quality=lossless" alt="Cancer" /><span>Cancer</span></a>
+  <a href="Leo.html"><img src="https://media.discordapp.net/attachments/1073222130768031806/1376923811848388608/66870c3e6b9efd5841686b2e817674de.png?ex=683717ba&is=6835c63a&hm=19cb52e3db513044611822c7611bd102adc2bf0bd8d8a691d6411f8c48785c34&=&format=webp&quality=lossless" alt="Leo" /><span>Leo</span></a>
+  <a href="Virgo.html"><img src="https://media.discordapp.net/attachments/1073222130768031806/1376922917719511201/3ff880494e0b78c4a0a3c2bf47394d7c.png?ex=683716e5&is=6835c565&hm=ff80cddc7e225892e6df9c932deb026300c5c84ec131aadfb1fd1487f0e696f9&=&format=webp&quality=lossless" alt="Virgo" /><span>Virgo</span></a>
+  <a href="Libra.html"><img src="https://media.discordapp.net/attachments/1073222130768031806/1376922916700295300/2d25acb67c208f5a60d7a6ec14eb5456.png?ex=683716e5&is=6835c565&hm=72e9fdbe1f55f76fc7da764dbce3e569f6f1170fe7e0358d5f5c5987b8a2ff29&=&format=webp&quality=lossless" alt="Libra" /><span>Libra</span></a>
+  <a href="Scorpio.html"><img src="https://media.discordapp.net/attachments/1073222130768031806/1376923730239815730/f362483cb755e0de9071f10ade7147f7.png?ex=683717a7&is=6835c627&hm=0b5d55a1775c25c59558c833963f3661396635c8af3c3500e062bde1da1a83e6&=&format=webp&quality=lossless" alt="Scorpio" /><span>Scorpio</span></a>
+  <a href="Sagittarius.html"><img src="https://media.discordapp.net/attachments/1073222130768031806/1376922917010542732/d02033c00c3996cd97b2f71cad15e117.png?ex=683716e5&is=6835c565&hm=ce6fe30615780b34bc4ec388ed08116f02f403177ba7356e6481598f85c93965&=&format=webp&quality=lossless" alt="Sagittarius" /><span>Sagittarius</span></a>
+  <a href="Capricorn.html"><img src="https://media.discordapp.net/attachments/1073222130768031806/1376922917367185528/2c4626bbb29b42cdbe75babce79271f7.png?ex=683716e5&is=6835c565&hm=f425eac12aabcabda7c189c7919482cbcebd046461bd3e27b89ccd3d09bee8ea&=&format=webp&quality=lossless" alt="Capricorn" /><span>Capricorn</span></a>
+  <a href="Aquarius.html"><img src="https://media.discordapp.net/attachments/1073222130768031806/1376923729036316765/c1d24a8e7857e59f6a40622069d70d60.png?ex=683717a7&is=6835c627&hm=61623c06f25944ddf531f3c3efa77dafb88a62114902ee91e155332627f0dfe6&=&format=webp&quality=lossless" alt="Aquarius" /><span>Aquarius</span></a>
+  <a href="Pisces.html"><img src="https://media.discordapp.net/attachments/1073222130768031806/1376923729942024242/d40796581f28a36cea261c82c337d1e8.png?ex=683717a7&is=6835c627&hm=d362982462b346f621836d0c214eb66c0dc7158a68b3ac1416379e6924a0acf5&=&format=webp&quality=lossless" alt="Pisces" /><span>Pisces</span></a>
+</section>
+
+
+<footer>
+  <p>&copy; 2025 Celestial Vibes with Madam Wesley Horoscope | Designed by GROUP</p>
+  <p>Illustration credit: <a href="https://scontent.fmnl4-1.fna.fbcdn.net/v/t1.15752-9/495268661_2046969052378874_7232082344268298059_n.png" target="_blank">[Image Source]</a></p>
+</footer>
+
+<audio id="background-music" loop>
+  <source src="https://cdn.pixabay.com/download/audio/2021/09/13/audio_0a8f020cb5.mp3" type="audio/mpeg">
+</audio>
+<button id="music-control">▶️</button>
+
+<script>
+  // Star decorations
+  const stars = document.querySelector('.stars');
+  for(let i = 0; i < 100; i++) {
+    const star = document.createElement('div');
+    star.classList.add('star');
+    star.style.top = `${Math.random() * 100}%`;
+    star.style.left = `${Math.random() * 100}%`;
+    star.style.animationDuration = `${Math.random() * 2 + 1}s`;
+    stars.appendChild(star);
+  }
+
+  // Animate sections on scroll
+  const sections = document.querySelectorAll('section');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting) {
+        entry.target.style.opacity = 1;
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.2 });
+
+  sections.forEach(section => observer.observe(section));
+
+  // Music control
+  const music = document.getElementById('background-music');
+  const control = document.getElementById('music-control');
+  let playing = false;
+
+  control.addEventListener('click', () => {
+    if (playing) {
+      music.pause();
+      control.textContent = '▶️';
+    } else {
+      music.play();
+      control.textContent = '⏸️';
+    }
+    playing = !playing;
+  });
+
+  window.addEventListener('load', () => {
+    music.volume = 0.3;
+  });
+</script>
+
+</body>
+</html>

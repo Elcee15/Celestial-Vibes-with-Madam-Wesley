@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Astrology 101 - Celestial Vibes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Quicksand&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #e0baff;
+      --secondary-color: #1a1831;
+      --accent-color: #c590e9;
+      --text-color: #ffffff;
+      --button-color: #3c336b;
+      --button-hover: #56408b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body.stars {
+      font-family: 'Cinzel', serif;
+      background: #1a1831 url('https://cdn.pixabay.com/photo/2017/08/30/07/55/space-2695569_1280.jpg') repeat;
+      background-size: cover;
+      animation: starScroll 60s linear infinite;
+      color: var(--text-color);
+      overflow-x: hidden;
+    }
+
+    @keyframes starScroll {
+      0% { background-position: 0 0; }
+      100% { background-position: -1000px 1000px; }
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--secondary-color);
+      padding: 15px 30px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    nav h1 {
+      font-size: 1.5rem;
+      color: var(--primary-color);
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+
+    nav li {
+      margin-left: 20px;
+    }
+
+    nav a {
+      color: var(--text-color);
+      text-decoration: none;
+      font-weight: bold;
+      padding: 8px 16px;
+      border-radius: 4px;
+      transition: background 0.3s;
+    }
+
+    nav a:hover {
+      background: var(--button-hover);
+    }
+
+    .banner1 {
+      text-align: center;
+      padding: 60px 20px;
+      background: url('https://cdn.discordapp.com/attachments/1073222130768031806/1376967309792641055/d70d0f0fc3b993dd3eef7910cc27aaa0.png?ex=6837403d&is=6835eebd&hm=775ee61df37577cccd8dea9828530f24b3f4147fb162c389c71437e8b75f2de0&') center/cover no-repeat;
+      position: relative;
+    }
+
+    .banner1::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(26, 24, 49, 0.7);
+    }
+
+    .banner1-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+      animation: fadeIn 1s ease-out;
+    }
+
+    .banner1 h2 {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+    }
+
+    .banner1 p {
+      font-size: 1.2rem;
+      color: #ddd;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: linear-gradient(45deg, #ff6ec4, #7873f5);
+      color: #fff;
+      padding: 12px 30px;
+      border-radius: 30px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: transform 0.3s, background 0.3s;
+    }
+
+    .cta-button:hover {
+      background: linear-gradient(45deg, #ff3cac, #784ba0);
+      transform: scale(1.05);
+    }
+
+    .info-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.04);
+      margin: 40px auto;
+      max-width: 1000px;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .info-section img {
+      width: 300px;
+      border-radius: 15px;
+      margin: 10px;
+      box-shadow: 0 0 12px rgba(224, 186, 255, 0.3);
+    }
+
+    .info-text {
+      flex: 1;
+      min-width: 280px;
+      margin: 10px;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    .info-text h3 {
+      color: var(--primary-color);
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    .quiz-section {
+      max-width: 800px;
+      margin: 60px auto;
+      background: rgba(255,255,255,0.05);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.4);
+    }
+
+    .quiz-section h3 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: var(--primary-color);
+    }
+
+    .quiz-question {
+      margin-bottom: 20px;
+    }
+
+    .quiz-question label {
+      display: block;
+      margin-bottom: 8px;
+      cursor: pointer;
+    }
+
+    .quiz-result {
+      margin-top: 20px;
+      text-align: center;
+      color: var(--accent-color);
+    }
+
+    footer {
+      background: var(--secondary-color);
+      padding: 20px;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: var(--primary-color);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+      .button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 15px 0;
+  }
+
+  .button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 15px 0;
+  }
+
+  .button-group button {
+    background: linear-gradient(to right, #a18cd1, #fbc2eb);
+    border: none;
+    color: #1a1831;
+    padding: 12px 20px;
+    font-size: 1rem;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.3s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .button-group button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .button-group button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  .question {
+    display: none;
+  }
+
+  .question.active {
+    display: block;
+  }
+  </style>
+</head>
+<body class="stars">
+  <nav>
+    <h1>Celestial Vibes</h1>
+    <ul>
+      <li><a href="Main Page.html">Home</a></li>
+      <li><a href="Astrology-101.html">Astrology 101</a></li>
+      <li><a href="tarot.html">Tarot</a></li>
+    </ul>
+  </nav>
+
+  <section class="banner1">
+    <div class="banner1-content">
+      <h2>Welcome to Astrology 101</h2>
+      <p>Uncover the mysteries of the stars and their influence on your journey. This is your cosmic classroom.</p>
+      <a href="#quiz" class="cta-button">Take the Element Quiz</a>
+    </div>
+  </section>
+
+<section class="info-section">
+  <img src="https://cdn.discordapp.com/attachments/1073222130768031806/1376951159335424110/a290800543bf329de3170685b678ed9f.png?ex=68373132&is=6835dfb2&hm=26f7f6f987f54ac356ccbea831286feb729ee25c777eb8dd8a6b3f87011fe741&" alt="Astrology chart">
+  <div class="info-text">
+    <h3>What is Astrology?</h3>
+    <p>Astrology is the ancient study of the movements and positions of celestial bodies—such as the stars, planets, and moon—and how they influence human lives and natural events on Earth.</p>
+    <p>Astrology is not just about horoscopes—it's a symbolic language that uses the position of planets at your time of birth to reflect your inner self and your journey through life.</p>
+    <p><strong>Fun Fact:</strong> The word “zodiac” comes from the Greek “zōidiakos,” meaning “circle of animals.” Eleven of the twelve zodiac signs are represented by animals!</p>
+  </div>
+</section>
+
+<section class="info-section">
+  <div class="info-text">
+    <h3>Signs, Elements, and Modalities</h3>
+    <p>The twelve zodiac signs are divided among four natural elements: <strong>Fire, Earth, Air and Water</strong>. Each element shares core emotional and psychological traits that influence how signs express themselves.</p><br>
+    <p>Beyond elements, zodiac signs are also classified by modality, which reveals how a sign interacts with change: <strong>Cardinal</strong> signs start seasons and initiate action, <strong>Fixed</strong> signs are stable and persistent, and <strong>Mutable</strong> signs are flexible and adaptable.</p><br>
+    <p><strong>Fun Fact:</strong> Virgo is the only zodiac sign represented by a human female figure—the maiden!</p>
+  </div>
+  <img src="https://cdn.discordapp.com/attachments/1073222130768031806/1376955116078235768/ChatGPT_Image_May_28_2025_12_07_43_AM.png?ex=683734e2&is=6835e362&hm=3a4b66888f5a0aaf4fa84089582fe2bba63f274fbad9e0fe5885eaf71a86ee08&" alt="Zodiac wheel">
+</section>
+
+<section class="info-section">
+  <img src="https://cdn.discordapp.com/attachments/1073222130768031806/1376951778180071494/d3ca35ea04eeba6cd4dc0431d1f4f0eb.png?ex=683731c6&is=6835e046&hm=b415f2b264010f101ef1c828db7f9acb80dfe2b58bbc95a2cd919609c97f2c60&" alt="Birth chart example">
+  <div class="info-text">
+    <h3>What is a Birth Chart?</h3>
+    <p>A birth chart, also known as a natal chart, is a snapshot of the sky at the exact moment and location of your birth. It maps the positions of the planets in the twelve astrological houses and signs, forming the foundation of personal astrology. Each component of the chart tells a different story—from your Sun sign (your core identity), Moon sign (your emotions), to your Ascendant (how others see you).</p>
+    <p><strong>Fun Fact:</strong> No two birth charts are exactly alike—not even for twins born minutes apart!</p>
+  </div>
+</section>
+
+<section class="info-section">
+  <div class="info-text">
+    <h3>Astrology vs. Astronomy</h3>
+    <p>Though they both study celestial bodies, astrology and astronomy are different disciplines. <strong>Astronomy</strong> is a natural science focused on the physics and movement of objects in space. <strong>Astrology</strong>, on the other hand, is a metaphysical study that interprets how these celestial patterns influence human lives and consciousness.</p><br>
+    <p>Historically, astrology and astronomy were part of the same field. Over time, they diverged as astronomy became more evidence-based and astrology remained symbolic and interpretive.</p><br>
+    <p><strong>Fun Fact:</strong> Many famous astronomers in history—like Galileo and Kepler—were also astrologers!</p>
+  </div>
+  <img src="https://cdn.discordapp.com/attachments/1073222130768031806/1376964095743496384/7313492dea7c2aab1624c33aee341708.png?ex=68373d3f&is=6835ebbf&hm=c091f78c377a404c87218005994e4b17ba3425e55dcadd3bd550cc336e9b564c&" alt="Stars and planets">
+</section>
+
+<section class="info-section">
+  <img src="https://cdn.discordapp.com/attachments/1073222130768031806/1376964416355963024/image.png?ex=68373d8b&is=6835ec0b&hm=c0cf49bb72449ab70934bd3dc30ad4475a2b3100a123819a866e6cb0bd86dee1&" alt="Astrological compatibility symbols">
+  <div class="info-text">
+    <h3>Astrological Compatibility</h3>
+    <p>Compatibility in astrology goes beyond Sun signs. While it’s popular to say “Aries and Leo are a perfect match,” deeper compatibility readings include the Moon, Venus, and Mars placements, as well as house overlays. These components reveal how two individuals communicate, show affection, and deal with challenges together.</p><br>
+    <p><strong>Fun Fact:</strong> Synastry—the comparison of two birth charts—is the astrological technique used to explore compatibility!</p>
+  </div>
+</section>
+
+
+<section id="quiz" class="quiz-section">
+  <h3>What’s Your Element?</h3>
+  <form id="element-quiz" onsubmit="return false">
+    <div class="quiz-question" id="question-container">
+      <div id="q1" class="question active">
+        <p>1. Choose your ideal weekend activity:</p>
+        <div class="button-group">
+          <button type="button" data-value="Fire" onclick="selectAnswer('q1', 'Fire')">Dancing all night</button>
+          <button type="button" data-value="Earth" onclick="selectAnswer('q1', 'Earth')">Gardening or cooking</button>
+          <button type="button" data-value="Air" onclick="selectAnswer('q1', 'Air')">Reading and writing</button>
+          <button type="button" data-value="Water" onclick="selectAnswer('q1', 'Water')">Watching the ocean or meditating</button>
+        </div>
+      </div>
+
+      <div id="q2" class="question">
+        <p>2. What quality do you value most?</p>
+        <div class="button-group">
+          <button type="button" data-value="Fire" onclick="selectAnswer('q2', 'Fire')">Passion</button>
+          <button type="button" data-value="Earth" onclick="selectAnswer('q2', 'Earth')">Stability</button>
+          <button type="button" data-value="Air" onclick="selectAnswer('q2', 'Air')">Intelligence</button>
+          <button type="button" data-value="Water" onclick="selectAnswer('q2', 'Water')">Empathy</button>
+        </div>
+      </div>
+
+      <div id="q3" class="question">
+        <p>3. Which color are you drawn to?</p>
+        <div class="button-group">
+          <button type="button" data-value="Fire" onclick="selectAnswer('q3', 'Fire')">Red or orange</button>
+          <button type="button" data-value="Earth" onclick="selectAnswer('q3', 'Earth')">Green or brown</button>
+          <button type="button" data-value="Air" onclick="selectAnswer('q3', 'Air')">Yellow or light blue</button>
+          <button type="button" data-value="Water" onclick="selectAnswer('q3', 'Water')">Blue or purple</button>
+        </div>
+      </div>
+
+      <div id="q4" class="question">
+        <p>4. What’s your dream environment?</p>
+        <div class="button-group">
+          <button type="button" data-value="Fire" onclick="selectAnswer('q4', 'Fire')">A festival or big event</button>
+          <button type="button" data-value="Earth" onclick="selectAnswer('q4', 'Earth')">A cozy cabin in nature</button>
+          <button type="button" data-value="Air" onclick="selectAnswer('q4', 'Air')">A mountaintop library</button>
+          <button type="button" data-value="Water" onclick="selectAnswer('q4', 'Water')">A quiet beach at dusk</button>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 20px; display: none;" id="result-button">
+      <button type="button" class="cta-button" onclick="showResult()">Reveal My Element</button>
+    </div>
+  </form>
+  <div class="quiz-result" id="quiz-result"></div>
+</section>
+
+  <footer>
+    <p>&copy; 2025 Celestial Vibes with Madam Wesley Horoscope | Designed by GROUP</p>
+    <p>Image credits: Your selected artwork and photos</p>
+  </footer>
+
+  <audio id="background-music" loop autoplay>
+    <source src="https://cdn.pixabay.com/download/audio/2021/09/13/audio_0a8f020cb5.mp3" type="audio/mpeg">
+  </audio>
+  <button id="music-control" style="position:fixed;bottom:20px;right:20px;background:#e0baff;color:#1a1831;border:none;border-radius:50%;width:50px;height:50px;font-size:1.2rem;cursor:pointer;box-shadow:0 0 10px rgba(0,0,0,0.3);">⏸️</button>
+
+  <script>
+ const answers = {};
+  const tally = { Fire: 0, Earth: 0, Air: 0, Water: 0 };
+  let currentQuestionIndex = 1;
+
+  function selectAnswer(questionId, value) {
+    if (answers[questionId]) return;
+    answers[questionId] = value;
+    tally[value]++;
+
+    const buttons = document.querySelectorAll(`#${questionId} button`);
+    buttons.forEach(btn => {
+      btn.disabled = true;
+      if (btn.getAttribute('data-value') === value) {
+        btn.style.backgroundColor = '#c590e9';
+        btn.style.color = '#fff';
+      }
+    });
+
+    const current = document.getElementById(questionId);
+    current.classList.remove('active');
+
+    const nextId = `q${parseInt(questionId[1]) + 1}`;
+    const next = document.getElementById(nextId);
+    if (next) {
+      next.classList.add('active');
+    } else {
+      document.getElementById('result-button').style.display = 'block';
+    }
+  }
+
+  function showResult() {
+    const result = document.getElementById('quiz-result');
+    const dominant = Object.keys(tally).reduce((a, b) => tally[a] > tally[b] ? a : b);
+    result.innerHTML = `<strong>Your dominant element is: ${dominant}</strong><br><br>${getElementDescription(dominant)}`;
+  }
+
+  function getElementDescription(element) {
+    const descriptions = {
+      Fire: "You're passionate, energetic, and unafraid to take the lead. You light up any room!",
+      Earth: "You’re grounded, dependable, and thrive in stability. You bring balance to chaos.",
+      Air: "You’re a thinker, curious and always searching for knowledge. You uplift others with ideas.",
+      Water: "You’re emotional, intuitive, and deeply connected to your surroundings and people."
+    };
+    return descriptions[element] || '';
+  }
+
+  document.getElementById('q1').classList.add('active');
+
+    control.addEventListener('click', () => {
+      if (playing) {
+        music.pause();
+        control.textContent = '▶️';
+      } else {
+        music.play();
+        control.textContent = '⏸️';
+      }
+      playing = !playing;
+    });
+
+    function checkQuiz(event) {
+      event.preventDefault();
+      const selected = document.querySelector('input[name="element"]:checked');
+      const result = document.getElementById('quiz-result');
+      if (!selected) {
+        result.textContent = 'Please select an option!';
+        return false;
+      }
+      result.textContent = `Your dominant element is: ${selected.value}`;
+      return false;
+    }
+  </script>
+</body>
+</html>

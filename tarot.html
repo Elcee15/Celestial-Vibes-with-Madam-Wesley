@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tarot Reader - Celestial Vibes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Cinzel', serif;
+      background: linear-gradient(to bottom right, #1a1831 50%, #2d264d 100%);
+      color: #ffffff;
+    }
+
+    nav {
+      background-color: #1a1831;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    nav h1 {
+      font-size: 1.5rem;
+      color: #e0baff;
+      margin: 0;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav li {
+      margin-left: 20px;
+    }
+
+    nav a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 10px 20px;
+      border-radius: 6px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #3c336b;
+      color: #e0baff;
+    }
+
+    .tarot-section {
+      max-width: 1000px;
+      margin: 40px auto;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    .deck {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin: 20px 0;
+    }
+
+    .tarot-card {
+      width: 100px;
+      height: 150px;
+      perspective: 1000px;
+      cursor: pointer;
+    }
+
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 8px;
+      border: 2px solid #e0baff;
+    }
+
+    .card-back {
+      background-image: url('https://i.pinimg.com/736x/bb/2a/ee/bb2aeee4ca22fb7c42c4942500f14142.jpg');
+      background-size: cover;
+    }
+
+    .card-front {
+      transform: rotateY(180deg);
+      background-size: cover;
+      background-position: center;
+    }
+
+    .tarot-card.flipped .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .tarot-card.selected .card-inner {
+      box-shadow: 0 0 10px #ffccff;
+      border-color: #ffccff;
+    }
+
+    .reveal-btn {
+      margin-top: 20px;
+      padding: 10px 30px;
+      background-color: #3c336b;
+      color: #ffffff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    footer {
+      background-color: #1a1831;
+      padding: 20px;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: #e0baff;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <h1>Celestial Vibes</h1>
+    <ul>
+      <li><a href="Main Page.html">Home</a></li>
+      <li><a href="Astrology-101.html">Astrology 101</a></li>
+      <li><a href="Tarot.html">Tarot</a></li>
+    </ul>
+  </nav>
+
+  <div class="tarot-section">
+    <h2>Pick 6 Tarot Cards</h2>
+    <div class="deck" id="deck"></div>
+    <button class="reveal-btn" onclick="showReading()">Show My Reading</button>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Celestial Vibes with Madam Wesley Horoscope | Designed by GROUP - 2</p>
+    <p>Image credits: Rider-Waite Tarot / Wikimedia Commons</p>
+  </footer>
+
+  <script>
+    const tarotDeck = [{ name: "The Fool", img: "https://media.discordapp.net/attachments/1073222130768031806/1376512389532487792/The_Fool.png?ex=68359890&is=68344710&hm=ec624739659b3052e6feef83bff94a606f6137e72a395805854f5c1f2cf2d6e0&=&format=webp&quality=lossless&width=524&height=856", meaning: "A new journey begins. Embrace spontaneity, take a leap of faith, and trust that the universe will catch you. Innocence and curiosity guide the way." },
+      { name: "The Magician", img: "https://media.discordapp.net/attachments/1073222130768031806/1376512444289253436/The_Magician.png?ex=6835989d&is=6834471d&hm=774378eb7ac90358705f4412b21be6b139fd277bfd05286ca164b864ce2a0dc8&=&format=webp&quality=lossless&width=524&height=856", meaning: "You have all the tools to manifest your desires. Focus your will and intentions — now is the time to act with confidence." },
+      { name: "The High Priestess", img: "https://media.discordapp.net/attachments/1073222130768031806/1376512383819710555/High_Priestess.png?ex=6835988e&is=6834470e&hm=650019b1f87926243a9fbd42c9f851e0fe95d744db5db552f05846e03d131d3b&=&format=webp&quality=lossless&width=524&height=856", meaning: "Trust your intuition. Secrets are unfolding beneath the surface. Look inward for answers, and let silence reveal hidden truths." },
+      { name: "The Empress", img: "https://media.discordapp.net/attachments/1073222130768031806/1376512388978835546/The_Empress.png?ex=6835988f&is=6834470f&hm=8a162cd982c58402375bedcd75a1d1c4a90d940d5b5539365568ab37ca393af8&=&format=webp&quality=lossless&width=524&height=856", meaning: "Authority, stability, and protection. Take charge of your world and lead with logic, discipline, and responsibility." },
+      { name: "The Emperor", img: "https://media.discordapp.net/attachments/1073222130768031806/1376512388274323496/The_Emperor.png?ex=6835988f&is=6834470f&hm=bde00edbae811a26369237b450ce3d6938c2875626d3bebc2bffa8c397f0ca18&=&format=webp&quality=lossless&width=524&height=856", meaning: "Authority, stability, and protection. Take charge of your world and lead with logic, discipline, and responsibility" },
+      { name: "The Hierophant", img: "https://media.discordapp.net/attachments/1073222130768031806/1376512442464468992/The_Hierophant.png?ex=6835989c&is=6834471c&hm=eacb36cbf834c853c77df9af244e3e125cc75a7d2e911b7d26e31f4524b7378f&=&format=webp&quality=lossless&width=524&height=856", meaning: "Tradition, belief systems, and spiritual teachings guide you now. Find wisdom in structure — or question the structures you’ve inherited." },
+      { name: "The Lovers", img: "https://media.discordapp.net/attachments/1073222130768031806/1376512443370573854/The_Lovers.png?ex=6835989c&is=6834471c&hm=eb158edf92fa9dd36f0e84083658ff8db0224da4f199ff3a767e38143a06a19a&=&format=webp&quality=lossless&width=524&height=856", meaning: "Union, duality, and choice. A meaningful connection is highlighted, but a decision may define the path forward. Choose with the heart." },
+      { name: "The Chariot", img: "https://media.discordapp.net/attachments/1073222130768031806/1376512386336292956/The_Chariot.png?ex=6835988f&is=6834470f&hm=011e87e68cdaef5656befaad401a4d8425abd8cb174fecdb03c3e783229ef4f6&=&format=webp&quality=lossless&width=524&height=856", meaning: "Victory is within your grasp. With discipline and determination, nothing can stand in your way. Stay focused — you are in control." },
+      { name: "Strength", img: "https://media.discordapp.net/attachments/1073222130768031806/1376512385082196018/Strength.png?ex=6835988e&is=6834470e&hm=f1ed00c6a47e347c9e93feeb318f427127f2104d38f72410c1960c58a27541ee&=&format=webp&quality=lossless&width=524&height=856", meaning: "True power comes from compassion and patience. You have the inner courage to face any challenge with grace and resilience." },
+      { name: "The Hermit", img: "https://media.discordapp.net/attachments/1073222130768031806/1376512441848168578/The_Hermit.png?ex=6835989c&is=6834471c&hm=3be5c35fa77acd7b0912d337813e9828dbb50e6e73a6943af32797bf313b4595&=&format=webp&quality=lossless&width=524&height=856", meaning: "Seek solitude for wisdom. The answers you seek lie within. This is a time of reflection, not isolation." },
+      { name: "The World", img: "https://media.discordapp.net/attachments/1073222130768031806/1376512446457446471/The_World.png?ex=6835989d&is=6834471d&hm=8142cd0767dba45faf4dc0faa5b1b518ff6d32787017ec2d0bf4e17e2fefe9ec&=&format=webp&quality=lossless&width=524&height=856", meaning: "Soul-searching, introspection, inner guidance." },
+      { name: "The Mother", img: "https://media.discordapp.net/attachments/1073222130768031806/1376512445564326009/The_Mother.png?ex=6835989d&is=6834471d&hm=94dc2b68553e5e3ec06b4be64c387805bd893b39eeb2b44f1ebd74bce00b1a09&=&format=webp&quality=lossless&width=524&height=856", meaning: "Divine feminine energy surrounds you. Nurturing, protection, and creation flow from your center. Embrace your sacred role in healing and giving life." },
+      { name: "The Devil", img: "https://media.discordapp.net/attachments/1073222130768031806/1376512387615555656/The_Devil.png?ex=6835988f&is=6834470f&hm=107b9c83ba2bf3a11ff372201daeefe3b0d7e0ced68c1741a712a25fd65c659d&=&format=webp&quality=lossless&width=524&height=856", meaning: "What holds you back? Temptation, obsession, or unhealthy bonds may be chaining you. Awareness is the first step toward liberation." },
+      { name: "Judgement", img: "https://media.discordapp.net/attachments/1073222130768031806/1376512384235081788/Judgement.png?ex=6835988e&is=6834470e&hm=24151e0c65b239df79ce4b69210f80af501fcc3b03ac6fad1244c9bd14a103ae&=&format=webp&quality=lossless&width=524&height=856", meaning: "A moment of reckoning and self-evaluation. You are being called to rise, reflect, and renew. Let go of guilt — transformation is near." },
+      { name: "The Death", img: "https://media.discordapp.net/attachments/1073222130768031806/1376512387179610143/The_Death.png?ex=6835988f&is=6834470f&hm=795c24d0b899bfa486d508d1dd134479c94369dd2b393168df47589db0b5f3b5&=&format=webp&quality=lossless&width=524&height=856", meaning: " An ending that makes way for a powerful new beginning. Let go of what no longer serves you — transformation is inevitable. This is not loss, but rebirth. From the ashes, something truer will rise." },
+      { name: "The Hanged Man", img: "https://media.discordapp.net/attachments/1073222130768031806/1376512385619333141/The_Hanged_Man.png?ex=6835988f&is=6834470f&hm=c40c7043cf3dbb015bc67cd586e92d3438dd11d98458100c9b34de5987c9b197&=&format=webp&quality=lossless&width=524&height=856", meaning: "A pause is necessary. Shift your perspective and surrender to stillness. Growth often comes from letting go." },
+      { name: "The Moon", img: "https://media.discordapp.net/attachments/1073222130768031806/1376512444901363762/The_Moon.png?ex=6835989d&is=6834471d&hm=e1b0ed9b4afee68dcacd4b622d07d1bedfebddcfee20376b9c7e9a8de8de6adc&=&format=webp&quality=lossless&width=524&height=856", meaning: "Illusions, dreams, and the subconscious rise to the surface. Things may not be what they seem. Trust your inner compass." },
+      { name: "The Star", img: "https://media.discordapp.net/attachments/1073222130768031806/1376512440765906944/The_Star.png?ex=6835989c&is=6834471c&hm=dd1f5f28a6d990a7f96caa19cacfa6985fa296d8b3060836375569a942d77c69&=&format=webp&quality=lossless&width=524&height=856", meaning: "Hope returns. Healing, clarity, and divine guidance light your way. Believe in your future — the universe is listening." },
+      { name: "The Sun", img: "https://media.discordapp.net/attachments/1073222130768031806/1376512447221071892/The_Sun.png?ex=6835989d&is=6834471d&hm=24f596b2bff91460260048bd21f9b1670157e5b461eafb88e3672deb3d609a01&=&format=webp&quality=lossless&width=524&height=856", meaning: "Joy, clarity, and success. A radiant chapter begins. Your inner child smiles — bask in this warmth and light." },
+      { name: "Wheel of Fortune", img: "https://media.discordapp.net/attachments/1073222130768031806/1376513682342936606/Wheel_of_Fortune.png?ex=683599c4&is=68344844&hm=ae9a193f5885f164490132413952a06323084511ae3c5e052cb73d6a6ec133bf&=&format=webp&quality=lossless&width=214&height=350", meaning: "Destiny turns. Life’s cycles are in motion — what goes up must come down, and vice versa. Trust in divine timing and adapt with grace." }];
+    const deckContainer = document.getElementById("deck");
+    const shuffledDeck = tarotDeck.sort(() => 0.5 - Math.random());
+
+    shuffledDeck.forEach((card, index) => {
+      const cardDiv = document.createElement("div");
+      cardDiv.classList.add("tarot-card");
+      cardDiv.dataset.index = index;
+
+      const cardInner = document.createElement("div");
+      cardInner.classList.add("card-inner");
+
+      const cardFront = document.createElement("div");
+      cardFront.classList.add("card-front");
+      cardFront.style.backgroundImage = `url(${card.img})`;
+
+      const cardBack = document.createElement("div");
+      cardBack.classList.add("card-back");
+
+      cardInner.appendChild(cardFront);
+      cardInner.appendChild(cardBack);
+      cardDiv.appendChild(cardInner);
+
+      cardDiv.addEventListener("click", () => {
+        if (!cardDiv.classList.contains("selected")) {
+          const selected = document.querySelectorAll(".tarot-card.selected");
+          if (selected.length < 6) {
+            cardDiv.classList.add("selected", "flipped");
+          } else {
+            alert("You can only select 6 cards.");
+          }
+        }
+      });
+
+      deckContainer.appendChild(cardDiv);
+    });
+
+    function showReading() {
+      const selectedCards = document.querySelectorAll(".tarot-card.selected");
+
+      if (selectedCards.length !== 6) {
+        alert("Please select exactly 6 cards.");
+        return;
+      }
+
+      const selectedData = Array.from(selectedCards).map(cardDiv => {
+        const index = cardDiv.dataset.index;
+        return tarotDeck[index];
+      });
+
+      sessionStorage.setItem('tarotResults', JSON.stringify(selectedData));
+      window.location.href = 'tarot-result.html';
+    }
+  </script>
+</body>
+</html>

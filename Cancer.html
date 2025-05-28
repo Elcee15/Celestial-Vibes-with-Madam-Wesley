@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cancer - Celestial Vibes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #e0baff;
+      --secondary-color: #1a1831;
+      --accent-color: #c590e9;
+      --text-color: #ffffff;
+      --button-color: #3c336b;
+      --button-hover: #56408b;
+      --card-bg: rgba(255, 255, 255, 0.05);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+body {
+  font-family: 'Quicksand', sans-serif;
+  background: #1a1831 url('https://media.discordapp.net/attachments/1286281650770149387/1376986123309547651/80cd299db06556b584232bf81c46b2d5.gif?ex=683751c2&is=68360042&hm=f0094425ab35de76c8cbf0b846ad89260f16dfb677d87741a933bff3cdfaa797&=') no-repeat center center fixed;
+  background-size: cover;
+  color: var(--text-color);
+  overflow-x: hidden;
+  height: 100vh;
+  margin: 0;
+  line-height: 1.6;
+}
+
+
+
+
+    nav {
+      background: var(--secondary-color);
+      padding: 10px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+    nav h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.5rem;
+      color: var(--primary-color);
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+    }
+    nav li {
+      margin-left: 20px;
+    }
+    nav a {
+      color: var(--text-color);
+      text-decoration: none;
+      font-weight: bold;
+      padding: 6px 14px;
+      border-radius: 4px;
+      transition: background 0.3s;
+    }
+    nav a:hover {
+      background: var(--button-hover);
+    }
+
+    .zodiac-header {
+      background: linear-gradient(rgba(26, 24, 49, 0.85), rgba(26, 24, 49, 0.85)),
+                  url('https://media.discordapp.net/attachments/1341056593730474124/1376547976289325068/ce415c77f579b6cff57bfbf135d5e879_1.jpg') center/cover no-repeat;
+      text-align: center;
+      padding: 80px 20px;
+      margin: 30px auto;
+      max-width: 1200px;
+      border-radius: 12px;}
+      
+    .zodiac-header h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 3rem;
+      background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
+    }
+    .zodiac-header p {
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 10px auto;
+    }
+
+    .section {
+      max-width: 1100px;
+      margin: 40px auto;
+      background: rgba(26, 24, 49, 0.8);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(224, 186, 255, 0.1);
+    }
+    .section h2 {
+      font-family: 'Cinzel', serif;
+      color: var(--primary-color);
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .feature-card {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: 12px;
+    }
+    .feature-card.reverse {
+      flex-direction: row-reverse;
+    }
+    .feature-card img {
+        max-width: 300px;
+         max-height: 300px;
+      width: auto;
+      height: auto;
+      object-fit: cover;
+      border-radius: 30px;
+      border: 2px solid var(--accent-color);
+    }
+    .feature-card .text {
+      flex: 1;
+    }
+
+    .compatibility-graph {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+      margin-top: 30px;
+    }
+    .compatibility-tile {
+      background: var(--card-bg);
+      padding: 15px 20px;
+      border: 1px solid var(--accent-color);
+      border-radius: 10px;
+      text-align: center;
+      color: var(--text-color);
+      font-weight: bold;
+    }
+
+    footer {
+      background: var(--secondary-color);
+      padding: 20px;
+      text-align: center;
+      font-size: 0.9rem;
+      margin-top: 60px;
+    }
+    footer a {
+      color: var(--primary-color);
+    }
+
+    @media (max-width: 768px) {
+      .feature-card {
+        flex-direction: column;
+        text-align: center;
+      }
+      .feature-card.reverse {
+        flex-direction: column;
+      }
+    }
+      .zodiac-buttons {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 15px;
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.zodiac-buttons a {
+  background: var(--button-color);
+  color: var(--text-color);
+  border-radius: 8px;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  transition: transform 0.3s;
+}
+
+.zodiac-buttons a img {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 5px;
+  border-radius: 20px;
+}
+
+.zodiac-buttons a span {
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.zodiac-buttons a:hover {
+  background: var(--button-hover);
+  transform: scale(1.05);
+}
+.zodiac-symbol {
+  max-width: 300px;
+  max-height: 300px;
+  width: auto;
+  height: auto;
+  border-radius: 30px;
+}
+  </style>
+</head>
+<body>
+
+<nav>
+  <h1>Celestial Vibes</h1>
+  <ul>
+    <li><a href="Main Page.html">Home</a></li>
+    <li><a href="Astrology-101.html">Astrology 101</a></li>
+    <li><a href="tarot.html">Tarot</a></li>
+  </ul>
+</nav>
+
+<section class="zodiac-header">
+  <img src="https://cdn.discordapp.com/attachments/1073222130768031806/1377162905786650635/9359825b07e306e4d044c8e506ede579.png?ex=6837f667&is=6836a4e7&hm=4233904d7861663e8dec33dba34e536cc33622684b7e11338256c70fde429343&" class="zodiac-symbol">
+  <h1>Cancer</h1>
+  <p>June 21 – July 22 | Element: Water | Ruling Planet: Moon </p>
+
+</section>
+
+
+<section class="section">
+<section class="section">
+  <h2>Core Personality Traits</h2>
+  <div class="feature-card">
+    <img src="https://cdn.discordapp.com/attachments/1073222130768031806/1377162946979041370/a7bdcaa18dcc4286a61b55936c1dc98c.png?ex=6837f671&is=6836a4f1&hm=da5baef3c0eae2c99d16924a7376838979327ac814d6ae821ab8431760058ad5&" alt="Zodiac Image" >
+<div class="text">
+  <p>
+    Cancer is the nurturer of the zodiac — deeply emotional, intuitive, and protective. Their energy is inward-flowing and gentle, but their strength lies in their emotional depth and unwavering loyalty. As a cardinal water sign, Cancer leads through care, connection, and instinct. They often view the world through the lens of feeling, memory, and emotional resonance.
+  </p>
+  <br>
+  <p>
+    <strong>Emotional Energy:</strong>
+    Cancer’s emotions ebb and flow like the tides. They are deeply sensitive and intuitive, often absorbing the emotions of others. Their emotional energy is nurturing, reflective, and can be intensely private.
+  </p>
+  <br>
+  <p>
+    <strong>Leadership Style:</strong>
+    Leads through empathy and protection. Cancer prefers to guide others by creating safe, emotionally supportive environments. Their leadership is quiet yet powerful, rooted in loyalty and care.
+  </p>
+  <br>
+  <p>
+    <strong>Mood Shifts:</strong>
+    Cancer can move from calm to emotionally overwhelmed quickly, especially when their loved ones are involved. They tend to internalize feelings, which can lead to moodiness or emotional withdrawal.
+  </p>
+  <br>
+  <p>
+    <strong>Worldview:</strong>
+  Cancer sees the world as a place to nurture and be nurtured. Their perspective is shaped by emotional memory, intuition, and a strong desire to protect what they hold dear.
+  </p>
+</div>
+
+  </div>
+</section>
+
+<section class="section">
+  <h2>Strengths & Challenges</h2>
+  <div class="feature-card reverse">
+    <img src=" https://cdn.discordapp.com/attachments/1073222130768031806/1377145941626458173/5266064ed9040508aa0017ec5d5bd8e8.png?ex=6837e69a&is=6836951a&hm=338fbdefa27b23a101a7c6c6031384667e73c72e1030e69a05559a1955f1d26d& " alt="Strengths Image" style="height: 300px;" >
+    <div class="text">
+     <div class="text">
+  <p>
+    Cancer individuals are deeply caring, intuitive, and protective souls who thrive on emotional connection and creating secure environments. As natural nurturers, they rarely hesitate to offer support and are known for their gentle yet steadfast approach to life. However, their sensitivity and tendency to retreat inward can sometimes lead to moodiness or emotional overwhelm.
+  </p>
+
+  <br>
+
+  <p><strong>Strengths:</strong> Empathetic, nurturing, loyal, protective, emotionally intelligent, intuitive, family-oriented.</p>
+
+  <br>
+
+  <p><strong>Challenges:</strong></p>
+  <ul style="margin-left: 20px; line-height: 1.6;">
+    <li><strong>Overly Sensitive:</strong> Takes things personally and can get hurt easily.</li>
+    <li><strong>Mood Swings:</strong> Prone to emotional highs and lows that are hard to predict.</li>
+    <li><strong>Avoids Confrontation:</strong> May retreat or give the silent treatment instead of facing conflict.</li>
+    <li><strong>Overprotective:</strong>  Tends to smother loved ones or hold on too tightly.</li>
+    <li><strong>Passive-Aggressive:</strong> Struggles to express anger directly.</li>
+    <li><strong>Difficulty Letting Go:</strong> Holds onto past pain or relationships long after they’ve ended.</li>
+    <li><strong>Fear of Vulnerability:</strong>  Puts up walls to protect their heart, even when they crave connection.</li>
+    <li><strong>Indecisiveness:</strong> May struggle to make decisions, especially when emotions are involved.</li>
+    <li><strong>Attachment to the Past:</strong>Can dwell on memories or long for what once was.</li>
+    <li><strong>Dependency:</strong> Sometimes relies too heavily on emotional security from others.</li>
+  </ul>
+</div>
+
+  </div>
+</section>
+
+<section class="section">
+  <h2>Love & Relationships</h2>
+  <div class="feature-card">
+    <img src="https://media.discordapp.net/attachments/1073222130768031806/1377145069055770697/f65408f0b17ce3d38661e21e8641b755.png?ex=6837e5ca&is=6836944a&hm=cf1be4c1eb6d3527dafbe6a0cfb74992a030e7c5e3bc28cb5abfe08638c0f5cb&=&format=webp&quality=lossless&width=350&height=350&" alt="Love Image" >
+    <div class="text">
+      <p> Cancers are devoted, nurturing, and romantic in love. They seek deep emotional bonds and thrive in secure, affectionate relationships. Loyalty, home, and emotional safety are key. Though slow to open up, once they do, they love deeply and protectively.
+</p>
+<br>
+      <Strong><p>How Aries Expresses Love: </Strong>
+Affectionate and caring
+Thoughtful gestures and emotional support
+Protective of their partner
+Loyal and devoted
+</p>
+<br>
+<strong>What Aries Seeks in a partner: <p></strong>
+Emotional depth and sensitivity
+Security and commitment
+Gentleness and compassion
+Someone who values home, family, and shared emotional space
+  </p>
+  <br>
+  <strong>Emotional Needs: <p></strong>
+To feel safe, valued, and emotionally supported
+To be able to share their feelings without fear of judgment
+To nurture and be nurtured in return
+A deep emotional connection that feels like “home”
+    </div>
+  </div>
+  <div class="compatibility-graph">
+  <div class="compatibility-tile">Taurus</div>
+  <div class="compatibility-tile">Pisces</div>
+  <div class="compatibility-tile">Virgo</div>
+  <div class="compatibility-tile">Scorpio</div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Career & Life Path</h2>
+  <div class="feature-card reverse">
+    <img src="https://cdn.discordapp.com/attachments/1073222130768031806/1377145408027099236/0ce20e76ad5b800b4ef14906bb046d5b.png?ex=6837e61b&is=6836949b&hm=f1436e506ac25a475f22618fbfc4414da9c5c80fe8d2ea08bf6a10454fa726fb&" alt="Career Image" >
+    <div class="text">
+       <p> A year for nurturing long-term goals and stepping into leadership through quiet persistence — especially from June to September, when the Moon’s cycles align to support emotional clarity and career growth.</p>
+<br>
+<p> <b>Ideal Careers:</b>
+Therapist, Social Worker, Chef, Teacher, Interior Designer, Nurse, Counselor, Historian, Nonprofit Worker</p>
+<br>
+<p><b>Work Style:</b>
+Supportive, Loyal, Detail-Oriented, Intuitive, and Patient</p>
+<br>
+<p><b>Leadership:</b>
+Protective and team-focused. Cancer leads with heart — creating emotionally healthy, stable spaces where others feel safe and motivated to grow.</p>
+<br>
+<p><b>Career Theme:</b>
+ A time to align career with emotional fulfillment. Build something meaningful, trust your instincts, and know that your quiet strength is your power.
+
+</p>
+    </div>
+  </div>
+</section>
+
+<section class="zodiac-buttons fade-in">
+  <a href="Aries.html"><img src="https://cdn.discordapp.com/attachments/1073222130768031806/1376922918008651888/cb0b7476c71dafb03c4dd1f115d0fadb.png?ex=683716e5&is=6835c565&hm=29e711ea7b4e59a0518f542b1fbb92fcb2dee7f0f490850328719d2b7f5c4a46&" alt="Aries" /><span>Aries</span></a>
+  <a href="Taurus.html"><img src="https://media.discordapp.net/attachments/1073222130768031806/1376923728692248686/d8285e6c417537b5dc5ef6b471b58468.png?ex=683717a6&is=6835c626&hm=044db3f44c6cebd16711a58459782fdb4a3b4105f3e1065e8b1cdaac04f09768&=&format=webp&quality=lossless" alt="Taurus" /><span>Taurus</span></a>
+  <a href="Gemini.html"><img src="https://cdn.discordapp.com/attachments/1073222130768031806/1376923729342234737/17a04d3d397ed5b750d7e7e662d804c3.png?ex=683717a7&is=6835c627&hm=7bd23d7f2e76d7131fd87e4cbe0172590c7b588e0c577f86b53486d22f8c3ba7&" alt="Gemini" /><span>Gemini</span></a>
+  <a href="Cancer.html"><img src="https://media.discordapp.net/attachments/1073222130768031806/1376923729652744373/26e376710016bdce91f8f2ff101804f1.png?ex=683717a7&is=6835c627&hm=a81dbc00145ea11d9b6f0329bd6e1e4686e8b5f59bf10b12a9f4ff18a1601631&=&format=webp&quality=lossless" alt="Cancer" /><span>Cancer</span></a>
+  <a href="Leo.html"><img src="https://cdn.discordapp.com/attachments/1073222130768031806/1376923811848388608/66870c3e6b9efd5841686b2e817674de.png?ex=683717ba&is=6835c63a&hm=19cb52e3db513044611822c7611bd102adc2bf0bd8d8a691d6411f8c48785c34&" alt="Leo" /><span>Leo</span></a>
+  <a href="Virgo.html"><img src="https://cdn.discordapp.com/attachments/1073222130768031806/1376922917719511201/3ff880494e0b78c4a0a3c2bf47394d7c.png?ex=683716e5&is=6835c565&hm=ff80cddc7e225892e6df9c932deb026300c5c84ec131aadfb1fd1487f0e696f9&" alt="Virgo" /><span>Virgo</span></a>
+  <a href="Libra.html"><img src="https://cdn.discordapp.com/attachments/1073222130768031806/1376922916700295300/2d25acb67c208f5a60d7a6ec14eb5456.png?ex=683716e5&is=6835c565&hm=72e9fdbe1f55f76fc7da764dbce3e569f6f1170fe7e0358d5f5c5987b8a2ff29&" alt="Libra" /><span>Libra</span></a>
+  <a href="Scorpio.html"><img src="https://media.discordapp.net/attachments/1073222130768031806/1376923730239815730/f362483cb755e0de9071f10ade7147f7.png?ex=683717a7&is=6835c627&hm=0b5d55a1775c25c59558c833963f3661396635c8af3c3500e062bde1da1a83e6&=&format=webp&quality=lossless" alt="Scorpio" /><span>Scorpio</span></a>
+  <a href="Sagittarius.html"><img src="https://media.discordapp.net/attachments/1073222130768031806/1376922917010542732/d02033c00c3996cd97b2f71cad15e117.png?ex=683716e5&is=6835c565&hm=ce6fe30615780b34bc4ec388ed08116f02f403177ba7356e6481598f85c93965&=&format=webp&quality=lossless" alt="Sagittarius" /><span>Sagittarius</span></a>
+  <a href="Capricorn.html"><img src="https://media.discordapp.net/attachments/1073222130768031806/1376922917367185528/2c4626bbb29b42cdbe75babce79271f7.png?ex=683716e5&is=6835c565&hm=f425eac12aabcabda7c189c7919482cbcebd046461bd3e27b89ccd3d09bee8ea&=&format=webp&quality=lossless" alt="Capricorn" /><span>Capricorn</span></a>
+  <a href="Aquarius.html"><img src="https://media.discordapp.net/attachments/1073222130768031806/1376923729036316765/c1d24a8e7857e59f6a40622069d70d60.png?ex=683717a7&is=6835c627&hm=61623c06f25944ddf531f3c3efa77dafb88a62114902ee91e155332627f0dfe6&=&format=webp&quality=lossless" alt="Aquarius" /><span>Aquarius</span></a>
+  <a href="Pisces.html"><img src="https://media.discordapp.net/attachments/1073222130768031806/1376923729942024242/d40796581f28a36cea261c82c337d1e8.png?ex=683717a7&is=6835c627&hm=d362982462b346f621836d0c214eb66c0dc7158a68b3ac1416379e6924a0acf5&=&format=webp&quality=lossless" alt="Pisces" /><span>Pisces</span></a>
+</section>
+
+
+
+<footer>
+  <p>&copy; 2025 Celestial Vibes with Madam Wesley Horoscope | Designed by GROUP</p>
+</footer>
+
+<!-- MUSIC -->
+<audio id="background-music" loop autoplay>
+  <source src="https://cdn.pixabay.com/download/audio/2021/09/13/audio_0a8f020cb5.mp3" type="audio/mpeg">
+</audio>
+<button id="music-control" style="position:fixed;bottom:20px;right:20px;background:#e0baff;color:#1a1831;border:none;border-radius:50%;width:50px;height:50px;font-size:1.2rem;cursor:pointer;box-shadow:0 0 10px rgba(0,0,0,0.3);">⏸️</button>
+<script>
+  const music = document.getElementById('background-music');
+  const control = document.getElementById('music-control');
+  let playing = true;
+
+  control.addEventListener('click', () => {
+    if (playing) {
+      music.pause();
+      control.textContent = '▶️';
+    } else {
+      music.play();
+      control.textContent = '⏸️';
+    }
+    playing = !playing;
+  });
+</script>
+</body>
+</html>
